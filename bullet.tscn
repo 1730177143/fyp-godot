@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfg3bh0yofyuo"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_b0ayk"]
+[ext_resource type="Texture2D" uid="uid://c43gxeis88oaw" path="res://organe_bullet.png" id="1_iqkb4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysjo5"]
+size = Vector2(16, 16)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_b0ayk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ysjo5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.9375, 1.9375)
+texture = ExtResource("1_iqkb4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
