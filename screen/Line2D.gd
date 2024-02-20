@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	var player = get_parent().find_child("CharacterBody2D")
+	var player = get_parent().find_child("Player")
 	var position = player.position
 	add_point(position)
 	if (get_point_count() >= 60):

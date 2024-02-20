@@ -201,5 +201,7 @@ default_color = Color(0.588235, 0.980392, 0.933333, 0.34902)
 joint_mode = 2
 script = ExtResource("3_ttlfo")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_jycoe")]
-position = Vector2(80, 656)
+[node name="Player" parent="." instance=ExtResource("3_jycoe")]
+position = Vector2(0, 712)
+
+[connection signal="shoot" from="Player" to="Player" method="_on_player_shoot"]

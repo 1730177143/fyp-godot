@@ -1,11 +1,9 @@
 extends Area2D
+@export var speed =1000
+var velocity =Vector2.RIGHT
 
-var velocity : Vector2
-@export var speed = 500
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	position += speed * velocity * delta
+	position += velocity *speed* delta
 
 func _on_timer_timeout():
 	queue_free()
