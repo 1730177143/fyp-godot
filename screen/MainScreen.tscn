@@ -9,44 +9,43 @@ script = ExtResource("1_0x14v")
 
 [node name="NewButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 869.0
-offset_top = 400.0
-offset_right = 977.0
-offset_bottom = 431.0
+offset_left = 320.0
+offset_top = 88.0
+offset_right = 428.0
+offset_bottom = 119.0
 text = "New"
 
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 869.0
-offset_top = 448.0
-offset_right = 977.0
-offset_bottom = 480.0
+offset_left = 320.0
+offset_top = 136.0
+offset_right = 428.0
+offset_bottom = 168.0
 text = "Continue"
 
 [node name="OptionsButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 869.0
-offset_top = 496.0
-offset_right = 976.0
-offset_bottom = 528.0
+offset_left = 320.0
+offset_top = 184.0
+offset_right = 427.0
+offset_bottom = 216.0
 action_mode = 0
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 869.0
-offset_top = 544.0
-offset_right = 976.0
-offset_bottom = 568.0
+offset_left = 320.0
+offset_top = 232.0
+offset_right = 427.0
+offset_bottom = 263.0
 text = "Quit"
 
 [node name="title" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 152.0
-offset_right = 1056.0
-offset_bottom = 344.0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 368.0
+offset_bottom = 88.0
 bbcode_enabled = true
-text = "
-[font_size={120
+text = "[font_size={40
 }][b][i]Seek to Survive[/i][/b][/font_size]"

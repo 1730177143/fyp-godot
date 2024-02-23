@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c43gxeis88oaw"
-path="res://.godot/imported/organe_bullet.png-08ab8928abd02f88be43403e16aca6eb.ctex"
+uid="uid://blp1pafd6j0n2"
+path="res://.godot/imported/player_shot.png-096d5c9edc797a76b4c3d9607e70e07a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://organe_bullet.png"
-dest_files=["res://.godot/imported/organe_bullet.png-08ab8928abd02f88be43403e16aca6eb.ctex"]
+source_file="res://pixel_assets/player_shot.png"
+dest_files=["res://.godot/imported/player_shot.png-096d5c9edc797a76b4c3d9607e70e07a.ctex"]
 
 [params]
 

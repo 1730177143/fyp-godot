@@ -13,7 +13,7 @@ func _options_pressed():
 
 
 func _new_pressed():
-	get_tree().change_scene_to_file("res://screen/Game.tscn")
+	get_tree().change_scene_to_file("res://map/map.tscn")
 
 
 func _quit():

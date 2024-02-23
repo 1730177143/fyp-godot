@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i8ipyq1ivgv4"
-path="res://.godot/imported/Bricks.png-cadb24cfd05dd03bd44167bcc73180f1.ctex"
+uid="uid://rhk7w3twllyo"
+path="res://.godot/imported/organe_bullet.png-d5db56afe154455bde919fb02b7e570a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bricks.png"
-dest_files=["res://.godot/imported/Bricks.png-cadb24cfd05dd03bd44167bcc73180f1.ctex"]
+source_file="res://pixel_assets/organe_bullet.png"
+dest_files=["res://.godot/imported/organe_bullet.png-d5db56afe154455bde919fb02b7e570a.ctex"]
 
 [params]
 
