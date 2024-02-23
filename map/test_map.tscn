@@ -28,7 +28,7 @@ patrol_points = NodePath("Patrolpoints")
 [node name="Patrolpoints" type="Node2D" parent="Enemies/EnemyAttacker" index="3"]
 
 [node name="Marker2D" type="Marker2D" parent="Enemies/EnemyAttacker/Patrolpoints" index="0"]
-position = Vector2(80, 14)
+position = Vector2(80, 22)
 
 [node name="Marker2D2" type="Marker2D" parent="Enemies/EnemyAttacker/Patrolpoints" index="1"]
 position = Vector2(-136, 22)

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://huya76312gep"]
+
+[ext_resource type="Texture2D" uid="uid://dmpqxcgnh1dmy" path="res://assets/enemies/enemy-death/enemy-death-1.png" id="1_5wrpu"]
+[ext_resource type="Texture2D" uid="uid://b5jdsyi6b3pnn" path="res://assets/enemies/enemy-death/enemy-death-2.png" id="2_n1wjj"]
+[ext_resource type="Texture2D" uid="uid://b3lkw01w8jge4" path="res://assets/enemies/enemy-death/enemy-death-3.png" id="3_qrtad"]
+[ext_resource type="Texture2D" uid="uid://lpam2rwt8fcb" path="res://assets/enemies/enemy-death/enemy-death-4.png" id="4_pumy5"]
+[ext_resource type="Texture2D" uid="uid://dnm65bgpuoms" path="res://assets/enemies/enemy-death/enemy-death-5.png" id="5_c2v3n"]
+[ext_resource type="Script" path="res://enemies/enemy_dealth_effect.gd" id="6_0pncj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2ttc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5wrpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n1wjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qrtad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pumy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c2v3n")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"dealth",
+"speed": 10.0
+}]
+
+[node name="EnemyDealthEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_k2ttc")
+animation = &"dealth"
+autoplay = "dealth"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("6_0pncj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
