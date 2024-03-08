@@ -34,6 +34,7 @@ animations = [{
 }]
 
 [node name="EnemyDealthEffect" type="AnimatedSprite2D"]
+position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_k2ttc")
 animation = &"dealth"
 autoplay = "dealth"

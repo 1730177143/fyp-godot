@@ -2,7 +2,7 @@ extends Area2D
 @export var Bullet_impact_effect: PackedScene = preload("res://player/bullet_impact_effect.tscn")
 @export var velocity: Vector2 = Vector2.RIGHT
 @export var speed: int = 500
-@export var damage_amout: int = 1
+@export var damage_amount: int = 1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,7 +27,7 @@ func bullet_impact_effect():
 
 
 func get_damage_amount() -> int:
-	return damage_amout
+	return damage_amount
 
 
 func _on_timer_timeout() -> void:
@@ -35,10 +35,10 @@ func _on_timer_timeout() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print("area_entered")
+	print("bullet_area_entered")
 	bullet_impact_effect()
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("body_entered")
+	print("bullet_body_entered")
 	bullet_impact_effect()

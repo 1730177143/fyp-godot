@@ -53,6 +53,8 @@ animations = [{
 radius = 12.0
 
 [node name="EnemyAttacker" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_b2q5e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -80,3 +82,4 @@ debug_color = Color(0.94902, 0.192157, 0.298039, 0.419608)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

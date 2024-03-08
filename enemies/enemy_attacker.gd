@@ -11,12 +11,18 @@ enum State{
 @export var wait_time: int = 1
 @export var health_amount: int = 3
 @export var Enemy_dealth_effect:PackedScene=preload("res://enemies/enemy_dealth_effect.tscn")
+@export var damage_amount:int=1
+
+@onready var stats: Node = Game.player_stats
+
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var number_of_points: int
 var points_position: Array[Vector2]
 var current_point: Vector2
 var current_point_position: int
 var can_walk: bool
+
 
 
 func _ready():
@@ -82,8 +88,13 @@ func enemy_animation():
 func enemy_dealth_effect():
 	var enemy_dealth_effect_instance=Enemy_dealth_effect.instantiate()
 	enemy_dealth_effect_instance.global_position=global_position
+	stats.material+=3
 	get_parent().add_child(enemy_dealth_effect_instance)
 	queue_free()
+
+func get_damage_amount() -> int:
+	return damage_amount
+
 
 func _on_timer_timeout() -> void:
 	can_walk=true
@@ -93,6 +104,10 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	print("enemy hurt")
 	if area.has_method("get_damage_amount"):
 		health_amount-=area.get_damage_amount()
-		print("health: "+ str(health_amount))
+		print("enemy health: "+ str(health_amount))
 		if health_amount<=0:
 			enemy_dealth_effect()
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

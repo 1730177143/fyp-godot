@@ -1,0 +1,124 @@
+[gd_scene load_steps=17 format=3 uid="uid://c6p2hb06wm0pm"]
+
+[ext_resource type="Texture2D" uid="uid://ffloy81meoac" path="res://assets/RedMoonTower_free_idle_animation..png" id="1_jwqb4"]
+[ext_resource type="Script" path="res://enemies/nest.gd" id="1_qcbyo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vod42"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(0, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7umjd"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(100, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fef02"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(200, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b21e"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(300, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvjax"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(400, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdfnr"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(500, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko1px"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(600, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofxm2"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(700, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb7gi"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(800, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiif3"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(900, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcaa7"]
+atlas = ExtResource("1_jwqb4")
+region = Rect2(1000, 0, 100, 140)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k0b5c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vod42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7umjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fef02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b21e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvjax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdfnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko1px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofxm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb7gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiif3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcaa7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01a5j"]
+size = Vector2(26, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrooy"]
+size = Vector2(32, 87)
+
+[node name="Nest" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_qcbyo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k0b5c")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.218657
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_01a5j")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 16.5)
+shape = SubResource("RectangleShape2D_hrooy")
+debug_color = Color(0.929412, 0.254902, 0.180392, 0.419608)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

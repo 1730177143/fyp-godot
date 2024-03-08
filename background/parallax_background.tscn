@@ -1,37 +1,70 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3hu70rdnoiw3"]
+[gd_scene load_steps=4 format=3 uid="uid://d3hu70rdnoiw3"]
 
-[ext_resource type="Texture2D" uid="uid://cr0k5iuyo02mq" path="res://assets/background/background.png" id="1_7myfe"]
-[ext_resource type="Texture2D" uid="uid://1rbnqyq6ony4" path="res://assets/background/middleground.png" id="2_nr25l"]
+[ext_resource type="Texture2D" uid="uid://csxjir5qtueol" path="res://assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_q7gs6"]
+[ext_resource type="Texture2D" uid="uid://cqje3nfxu6inj" path="res://assets/Legacy-Fantasy - High Forest 2.3/Trees/Background-Hills.png" id="2_gitej"]
+[ext_resource type="Texture2D" uid="uid://x5hsusqgi770" path="res://assets/Legacy-Fantasy - High Forest 2.3/Trees/Background-Trees.png" id="3_wxodm"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 offset = Vector2(0, -220)
 transform = Transform2D(1, 0, 0, 1, 0, -220)
 
-[node name="BackgroundParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(720, 0)
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(960, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="BackgroundParallaxLayer"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_7myfe")
+[node name="Background" type="Sprite2D" parent="Sky"]
+texture = ExtResource("1_q7gs6")
 centered = false
 
-[node name="Sprite2D2" type="Sprite2D" parent="BackgroundParallaxLayer"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_7myfe")
+[node name="Background2" type="Sprite2D" parent="Sky"]
+texture = ExtResource("1_q7gs6")
 centered = false
-offset = Vector2(240, 0)
+offset = Vector2(480, 0)
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.9, 1)
-motion_mirroring = Vector2(816, 0)
+[node name="Hills" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(384, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_nr25l")
+[node name="Sprite2D" type="Sprite2D" parent="Hills"]
+texture = ExtResource("2_gitej")
 centered = false
+offset = Vector2(-20, 120)
 
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_nr25l")
+[node name="Sprite2D2" type="Sprite2D" parent="Hills"]
+texture = ExtResource("2_gitej")
 centered = false
-offset = Vector2(272, 0)
+offset = Vector2(76, 120)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Hills"]
+texture = ExtResource("2_gitej")
+centered = false
+offset = Vector2(172, 120)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Hills"]
+texture = ExtResource("2_gitej")
+centered = false
+offset = Vector2(268, 120)
+
+[node name="Tress" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tress"]
+texture = ExtResource("3_wxodm")
+centered = false
+offset = Vector2(0, 150)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Tress"]
+texture = ExtResource("3_wxodm")
+centered = false
+offset = Vector2(96, 150)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Tress"]
+texture = ExtResource("3_wxodm")
+centered = false
+offset = Vector2(192, 150)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Tress"]
+texture = ExtResource("3_wxodm")
+centered = false
+offset = Vector2(288, 150)
