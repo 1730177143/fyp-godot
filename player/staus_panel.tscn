@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/staus_panel.gd" id="1_mpdrv"]
 [ext_resource type="Texture2D" uid="uid://bqxn1gyy87fw0" path="res://assets/Legacy-Fantasy - High Forest 2.3/HUD/Base-01.png" id="1_wxk8a"]
-[ext_resource type="Texture2D" uid="uid://06phrr4aefvu" path="res://assets/player/player-idle/player-idle-1.png" id="2_gsosj"]
+[ext_resource type="Texture2D" uid="uid://cwf7jxuctf4xp" path="res://player-idle1.png" id="3_uhbkm"]
 [ext_resource type="Texture2D" uid="uid://cll01pc27q2h2" path="res://pixel_assets/gear.png" id="4_l4i3g"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ey03u"]
@@ -13,9 +13,9 @@ texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 region_rect = Rect2(95, 207, 18, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s47dv"]
-atlas = ExtResource("2_gsosj")
-region = Rect2(33, 22, 11, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxvwo"]
+atlas = ExtResource("3_uhbkm")
+region = Rect2(9, 5, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mdam"]
 atlas = ExtResource("1_wxk8a")
@@ -74,7 +74,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ey03u")
 
 [node name="Avatar" type="TextureRect" parent="StausPanel/AvatarBox"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_s47dv")
+texture = SubResource("AtlasTexture_gxvwo")
 stretch_mode = 5
 
 [node name="V" type="VBoxContainer" parent="StausPanel"]
