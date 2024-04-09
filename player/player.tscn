@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://7fp7igkgaoa0" path="res://spritesheets/player-run.png" id="6_kufcq"]
 [ext_resource type="Texture2D" uid="uid://ce6fm2yodqsd1" path="res://spritesheets/player-run-shoot.png" id="7_utwiw"]
 [ext_resource type="Texture2D" uid="uid://cg78o5oxbv5ub" path="res://assets/gdb-gamepad-2(all)/gdb-keyboard-2.png" id="28_7v50t"]
-[ext_resource type="PackedScene" uid="uid://drfa08cbtrsr4" path="res://player/staus_panel.tscn" id="30_curqo"]
+[ext_resource type="PackedScene" uid="uid://drfa08cbtrsr4" path="res://characters/panel.tscn" id="30_curqo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsc3b"]
 atlas = ExtResource("2_r614o")

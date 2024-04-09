@@ -1,8 +1,8 @@
-class_name Player
+
 extends CharacterBody2D
 signal health_changed
 signal shoot(Bullet, face_direction, muzzle_position_1, muzzle_position_2)
-@export var Bullet: PackedScene = preload("res://player/bullet.tscn")
+var Bullet: PackedScene = preload("res://characters/player_bullet.tscn")
 @export var cooldown: float = 0.25
 @export var gravity: int = 980
 @export var horizonal_speed: int = 1000

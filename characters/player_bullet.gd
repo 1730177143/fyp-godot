@@ -1,18 +1,8 @@
-extends Area2D
-@export var Bullet_impact_effect: PackedScene = preload("res://player/bullet_impact_effect.tscn")
+extends Hitbox
+@export var Bullet_impact_effect: PackedScene = preload("res://characters/bullet_impact_effect.tscn")
 @export var velocity: Vector2 = Vector2.RIGHT
 @export var speed: int = 500
 @export var damage_amount: int = 1
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _physics_process(delta: float) -> void:
@@ -34,8 +24,10 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 
-func _on_area_entered(area: Area2D) -> void:
-	print("bullet_area_entered")
+func _on_area_entered(hurtbox: Hurtbox) -> void:
+	print("[Hit] %s => %s" % [name, hurtbox.owner.name])
+	hit.emit(hurtbox)
+	hurtbox.hurt.emit(self)
 	bullet_impact_effect()
 
 

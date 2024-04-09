@@ -1,17 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3i2ftubyhqp4"]
+[gd_scene load_steps=7 format=3 uid="uid://ce6tqqf11k5u3"]
 
-[ext_resource type="Script" path="res://player/bullet.gd" id="1_8c6ns"]
-[ext_resource type="Texture2D" uid="uid://rhk7w3twllyo" path="res://pixel_assets/organe_bullet.png" id="1_vf6cy"]
+[ext_resource type="Texture2D" uid="uid://rhk7w3twllyo" path="res://pixel_assets/organe_bullet.png" id="1_10oga"]
+[ext_resource type="Script" path="res://characters/player_bullet.gd" id="2_4s8vq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hg3yy"]
 size = Vector2(8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryan0"]
-atlas = ExtResource("1_vf6cy")
+atlas = ExtResource("1_10oga")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_shwp8"]
-atlas = ExtResource("1_vf6cy")
+atlas = ExtResource("1_10oga")
 region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7d7i6"]
@@ -28,10 +28,10 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="Bullet" type="Area2D"]
-collision_layer = 2
-collision_mask = 5
-script = ExtResource("1_8c6ns")
+[node name="PlayerBullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 257
+script = ExtResource("2_4s8vq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hg3yy")
@@ -45,6 +45,8 @@ frame_progress = 0.688997
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
