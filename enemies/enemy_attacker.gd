@@ -10,7 +10,7 @@ enum State{
 @export var patrol_points: Node
 @export var wait_time: int = 1
 @export var health_amount: int = 3
-@export var Enemy_dealth_effect:PackedScene=preload("res://enemies/enemy_dealth_effect.tscn")
+@export var Enemy_dealth_effect:PackedScene=preload("res://characters/enemies/enemy_dealth_effect.tscn")
 @export var damage_amount:int=1
 
 @onready var stats: Node = Game.player_stats

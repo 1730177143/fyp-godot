@@ -29,8 +29,3 @@ func _on_area_entered(hurtbox: Hurtbox) -> void:
 	hit.emit(hurtbox)
 	hurtbox.hurt.emit(self)
 	bullet_impact_effect()
-
-
-func _on_body_entered(body: Node2D) -> void:
-	print("bullet_body_entered")
-	bullet_impact_effect()

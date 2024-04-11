@@ -4,7 +4,8 @@ enum State{
 	RUN,
 	IDLE,
 	ATTACK,
-	DEATH,
+	HURT,
+	DYING,
 }
 
 const KNOCKBACK_AMOUNT := 512.0
@@ -23,7 +24,7 @@ func can_see_player() -> bool:
 	
 func tick_physics(state: State, delta: float) -> void:
 	match state:
-		State.IDLE,State.DEATH:
+		State.IDLE,State.DYING,State.HURT:
 			move(0.0, delta)
 		
 		State.ATTACK:
@@ -33,11 +34,11 @@ func tick_physics(state: State, delta: float) -> void:
 			move(max_speed, delta)
 	
 func get_next_state(state: State) -> int:
-	#if stats.health == 0:
-		#return StateMachine.KEEP_CURRENT if state == State.DYING else State.DYING
-	#
-	#if pending_damage:
-		#return State.HURT
+	if stats.health == 0:
+		return StateMachine.KEEP_CURRENT if state == State.DYING else State.DYING
+	
+	if pending_damage:
+		return State.HURT
 	
 	match state:
 		State.IDLE:
@@ -59,9 +60,9 @@ func get_next_state(state: State) -> int:
 			if not attack_checker.is_colliding() :
 				return State.IDLE
 		
-		#State.HURT:
-			#if not animation_player.is_playing():
-				#return State.RUN
+		State.HURT:
+			if not animation_player.is_playing():
+				return State.IDLE
 	
 	return StateMachine.KEEP_CURRENT
 
@@ -84,11 +85,11 @@ func transition_state(from: State, to: State) -> void:
 		State.RUN:
 			animation_player.play("run")
 		
-		#State.HURT:
-			#animation_player.play("hit")
-			#
-			#stats.health -= pending_damage.amount
-			#
+		State.HURT:
+			animation_player.play("hit")
+			
+			stats.health -= pending_damage.amount
+			
 			#var dir := pending_damage.source.global_position.direction_to(global_position)
 			#velocity = dir * KNOCKBACK_AMOUNT
 			#
@@ -96,8 +97,14 @@ func transition_state(from: State, to: State) -> void:
 				#direction = Direction.LEFT
 			#else:
 				#direction = Direction.RIGHT
-			#
-			#pending_damage = null
-		#
-		#State.DYING:
-			#animation_player.play("die")
+			
+			pending_damage = null
+		
+		State.DYING:
+			animation_player.play("die")
+
+
+func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
+	pending_damage = Damage.new()
+	pending_damage.amount = 1
+	pending_damage.source = hitbox.owner

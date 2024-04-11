@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://c02xorbpkowa2"]
+
+[ext_resource type="Theme" uid="uid://drb42fs6jxoc1" path="res://screen/main_theme.tres" id="1_b82sy"]
+[ext_resource type="Script" path="res://ui/title_screen.gd" id="2_d8hp1"]
+[ext_resource type="PackedScene" uid="uid://d3hu70rdnoiw3" path="res://background/parallax_background.tscn" id="3_ebblh"]
+[ext_resource type="FontFile" uid="uid://dn5gkxu04qepu" path="res://SmileySans-Oblique.ttf" id="4_t0h4f"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_b82sy")
+script = ExtResource("2_d8hp1")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_ebblh")]
+offset = Vector2(0, -110)
+transform = Transform2D(1, 0, 0, 1, 0, -110)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_t0h4f")
+theme_override_font_sizes/font_size = 66
+text = "Seek to Survive"
+horizontal_alignment = 1
+
+[node name="V" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -112.0
+offset_right = 22.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NewGame" type="Button" parent="V"]
+layout_mode = 2
+text = "New"
+
+[node name="LoadGame" type="Button" parent="V"]
+layout_mode = 2
+text = "Load"
+
+[node name="ExitGame" type="Button" parent="V"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = " Exit "
+
+[connection signal="pressed" from="V/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="V/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="V/ExitGame" to="." method="_on_exit_game_pressed"]

@@ -44,11 +44,17 @@ func to_dict() -> Dictionary:
 	return {
 		max_energy=max_energy,
 		max_health=max_health,
+		max_material=max_material,
 		health=health,
+		material=material,
+		energy=energy,
 	}
 
 
 func from_dict(dict: Dictionary) -> void:
 	max_energy = dict.max_energy
 	max_health = dict.max_health
+	max_material=dict.max_material
 	health = dict.health
+	material=dict.material
+	energy=dict.energy

@@ -30,7 +30,7 @@ const AIR_ACCELERATION := RUN_SPEED / 0.1
 # 是负数的原因是因为在2D空间中y轴向上为负
 const JUMP_VELOCITY := -320.0
 const WALL_JUMP_VELOCITY := Vector2(380, -280)
-const KNOCKBACK_AMOUNT := 512.0
+const KNOCKBACK_AMOUNT := 256.0
 const SLIDING_DURATION := 0.3
 const SLIDING_SPEED := 256.0
 const SLIDING_ENERGY := 4.0
@@ -60,6 +60,8 @@ var Bullet: PackedScene = preload("res://characters/player_bullet.tscn")
 @onready var muzzle: Marker2D = $Muzzle
 @onready var muzzle_2: Marker2D = $Muzzle2
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var stats: Stats = $Stats
+@onready var invincible_timer: Timer = $InvincibleTimer
 
 func _ready() -> void:
 	pass
@@ -80,10 +82,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func tick_physics(state: State, delta: float) -> void:
 	#interaction_icon.visible = not interacting_with.is_empty()
 	#
-	#if invincible_timer.time_left > 0:
-		#graphics.modulate.a = sin(Time.get_ticks_msec() / 20) * 0.5 + 0.5
-	#else:
-		#graphics.modulate.a = 1
+	if invincible_timer.time_left > 0:
+		graphics.modulate.a = sin(Time.get_ticks_msec() / 20) * 0.5 + 0.5
+	else:
+		graphics.modulate.a = 1
 		
 	match state:
 		State.IDLE:
@@ -145,9 +147,12 @@ func shoot_bullet() -> void:
 	if can_shoot():
 		shoot.emit(Bullet, direction==1, muzzle_2.global_position, muzzle.global_position)
 
+func die() -> void:
+	get_tree().reload_current_scene()
+
 func get_next_state(state: State) -> int:
-	#if stats.health == 0:
-		#return StateMachine.KEEP_CURRENT if state == State.DYING else State.DYING
+	if stats.health == 0:
+		return StateMachine.KEEP_CURRENT if state == State.DYING else State.DYING
 	
 	if pending_damage:
 		return State.HURT
@@ -244,23 +249,23 @@ func transition_state(from: State, to: State) -> void:
 		State.RUNNING_SHOOT:
 			animation_player.play("running_shoot")
 		
-		#State.HURT:
-			#animation_player.play("hurt")
-			#
-			##Input.start_joy_vibration(0, 0, 0.8, 0.8)
+		State.HURT:
+			animation_player.play("hurt")
+			
+			#Input.start_joy_vibration(0, 0, 0.8, 0.8)
 			#Game.shake_camera(4)
-			#
-			##stats.health -= pending_damage.amount
-			#
-			#var dir := pending_damage.source.global_position.direction_to(global_position)
-			#velocity = dir * KNOCKBACK_AMOUNT
-			#
-			#pending_damage = null
-			##invincible_timer.start()
-		#
-		#State.DYING:
-			#animation_player.play("die")
-			#invincible_timer.stop()
+			
+			stats.health -= pending_damage.amount
+			
+			var dir := pending_damage.source.global_position.direction_to(global_position)
+			velocity = dir * KNOCKBACK_AMOUNT
+			
+			pending_damage = null
+			invincible_timer.start()
+		
+		State.DYING:
+			animation_player.play("die")
+			invincible_timer.stop()
 			#interacting_with.clear()
 	
 	is_first_tick = true
@@ -276,3 +281,12 @@ func _on_shoot(Bullet: PackedScene, face_direction: bool, muzzle_position_1: Vec
 		bullet_instance.velocity=Vector2.LEFT
 	shoot_timer.start()
 	get_parent().add_child(bullet_instance)
+
+
+func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
+	if invincible_timer.time_left > 0:
+		return
+	
+	pending_damage = Damage.new()
+	pending_damage.amount = 1
+	pending_damage.source = hitbox.owner

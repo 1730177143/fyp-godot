@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="seek to survive"
-run/main_scene="res://map/world.tscn"
+run/main_scene="res://map/world1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

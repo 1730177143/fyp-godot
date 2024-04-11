@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmvcemd24b1yd"]
+[gd_scene load_steps=6 format=3 uid="uid://cmvcemd24b1yd"]
 
 [ext_resource type="Script" path="res://classes/StateMachine.gd" id="1_cbnlc"]
 [ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_m1cn8"]
 [ext_resource type="Script" path="res://classes/Hurtbox.gd" id="2_mhohl"]
 [ext_resource type="Script" path="res://classes/Hitbox.gd" id="3_dpufv"]
+[ext_resource type="Script" path="res://classes/Stats.gd" id="5_kveha"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 script = ExtResource("1_m1cn8")
 
@@ -25,3 +26,6 @@ script = ExtResource("2_mhohl")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_cbnlc")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("5_kveha")

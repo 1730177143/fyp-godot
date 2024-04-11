@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b3lkw01w8jge4" path="res://assets/enemies/enemy-death/enemy-death-3.png" id="3_qrtad"]
 [ext_resource type="Texture2D" uid="uid://lpam2rwt8fcb" path="res://assets/enemies/enemy-death/enemy-death-4.png" id="4_pumy5"]
 [ext_resource type="Texture2D" uid="uid://dnm65bgpuoms" path="res://assets/enemies/enemy-death/enemy-death-5.png" id="5_c2v3n"]
-[ext_resource type="Script" path="res://enemies/enemy_dealth_effect.gd" id="6_0pncj"]
+[ext_resource type="Script" path="res://characters/enemies/enemy_dealth_effect.gd" id="6_0pncj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k2ttc"]
 animations = [{
