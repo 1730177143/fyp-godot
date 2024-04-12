@@ -31,9 +31,9 @@ const AIR_ACCELERATION := RUN_SPEED / 0.1
 const JUMP_VELOCITY := -320.0
 const WALL_JUMP_VELOCITY := Vector2(380, -280)
 const KNOCKBACK_AMOUNT := 256.0
-const SLIDING_DURATION := 0.3
-const SLIDING_SPEED := 256.0
-const SLIDING_ENERGY := 4.0
+const COST_ENERGY_PER_FRAME := 3
+const RUSH_RATE := 2.0
+const RUSH_ENERGY := 4.0
 const LANDING_HEIGHT := 100.0
 
 @export var can_combo := false
@@ -62,6 +62,8 @@ var Bullet: PackedScene = preload("res://characters/player_bullet.tscn")
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var stats: Stats = $Stats
 @onready var invincible_timer: Timer = $InvincibleTimer
+@onready var game_over_screen: Control = $CanvasLayer/GameOverScreen
+@onready var pause_screen: Control = $CanvasLayer/PauseScreen
 
 func _ready() -> void:
 	pass
@@ -74,7 +76,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		jump_request_timer.stop()
 		if velocity.y < JUMP_VELOCITY / 2:
 			velocity.y = JUMP_VELOCITY / 2
-
+			
+	#if event.is_action_pressed("interact") and interacting_with:
+		#interacting_with.back().interact()
+	
+	if event.is_action_pressed("pause"):
+		pause_screen.show_pause()
 
 
 
@@ -95,7 +102,8 @@ func tick_physics(state: State, delta: float) -> void:
 			move(default_gravity, delta)
 		
 		State.RUSH:
-			move(default_gravity, delta)
+			rush(default_gravity, delta)
+			stats.energy -= COST_ENERGY_PER_FRAME * delta
 			
 		State.JUMP:
 			move(0.0 if is_first_tick else default_gravity, delta)
@@ -113,7 +121,6 @@ func tick_physics(state: State, delta: float) -> void:
 		
 		State.HURT, State.DYING:
 			stand(default_gravity, delta)
-		
 	
 	is_first_tick = false
 
@@ -131,6 +138,18 @@ func move(gravity: float, delta: float) -> void:
 	
 	move_and_slide()
 
+func rush(gravity: float, delta: float) -> void:
+	# 获取按键输入
+	var movement := Input.get_axis("move_left", "move_right")
+	# 修改速度向量
+	var acceleration := FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
+	velocity.x = move_toward(velocity.x, movement * RUN_SPEED * RUSH_RATE, acceleration * delta)
+	velocity.y += gravity * delta
+	# 如果在移动，并且是向左移动，那么将角色水平翻转
+	if not is_zero_approx(movement):
+		direction = Direction.LEFT if movement < 0 else Direction.RIGHT
+	
+	move_and_slide()
 
 func stand(gravity: float, delta: float) -> void:
 	var acceleration := FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
@@ -138,6 +157,12 @@ func stand(gravity: float, delta: float) -> void:
 	velocity.y += gravity * delta
 	
 	move_and_slide()
+
+func can_rush() -> bool:
+	if Input.is_action_pressed("rush") and stats.energy >= RUSH_ENERGY:
+		return true
+	else :
+		return false
 
 func can_shoot()-> bool:
 	var res:=Input.is_action_pressed("shoot") and shoot_timer.is_stopped()
@@ -148,7 +173,7 @@ func shoot_bullet() -> void:
 		shoot.emit(Bullet, direction==1, muzzle_2.global_position, muzzle.global_position)
 
 func die() -> void:
-	get_tree().reload_current_scene()
+	game_over_screen.show_game_over()
 
 func get_next_state(state: State) -> int:
 	if stats.health == 0:
@@ -181,6 +206,8 @@ func get_next_state(state: State) -> int:
 		State.RUNNING:
 			if can_shoot():
 				return State.RUNNING_SHOOT
+			if can_rush():
+				return State.RUSH
 			if is_still:
 				if can_shoot():
 					return State.SHOOT
@@ -207,6 +234,9 @@ func get_next_state(state: State) -> int:
 				
 		State.HURT:
 			if not animation_player.is_playing():
+				return State.IDLE
+		State.RUSH:
+			if not can_rush():
 				return State.IDLE
 		
 	
@@ -244,7 +274,7 @@ func transition_state(from: State, to: State) -> void:
 		
 		State.SHOOT:
 			animation_player.play("shoot")
-			#SoundManager.play_sfx("Attack")
+			SoundManager.play_sfx("Attack")
 		
 		State.RUNNING_SHOOT:
 			animation_player.play("running_shoot")
@@ -267,6 +297,9 @@ func transition_state(from: State, to: State) -> void:
 			animation_player.play("die")
 			invincible_timer.stop()
 			#interacting_with.clear()
+			
+		State.RUSH:
+			animation_player.play("rush")
 	
 	is_first_tick = true
 

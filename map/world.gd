@@ -20,8 +20,8 @@ func _ready() -> void:
 	camera_2d.limit_left= used.position.x * tile_size.x
 	# 将相机的位置立即设置为其当前平滑的目标位置。
 	camera_2d.reset_smoothing()
-	#if bgm:
-		#SoundManager.play_bgm(bgm)
+	if bgm:
+		SoundManager.play_bgm(bgm)
 
 
 func update_player(pos: Vector2, direction: Player.Direction) -> void:

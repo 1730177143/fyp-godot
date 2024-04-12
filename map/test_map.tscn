@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ci5ufsc81da01"]
 
-[ext_resource type="PackedScene" uid="uid://b2j0iobq1rmmm" path="res://map/world1.tscn" id="1_ros7t"]
+[ext_resource type="PackedScene" uid="uid://b2j0iobq1rmmm" path="res://map/world.tscn" id="1_ros7t"]
 [ext_resource type="PackedScene" uid="uid://c6p2hb06wm0pm" path="res://enemies/nest.tscn" id="2_uq1rp"]
 [ext_resource type="PackedScene" uid="uid://c231mj7r0br4e" path="res://enemies/enemy_attacker.tscn" id="2_w1i0u"]
 [ext_resource type="Script" path="res://Interactable.gd" id="3_3npu2"]

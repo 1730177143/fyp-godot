@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://drfa08cbtrsr4"]
+[gd_scene load_steps=18 format=3 uid="uid://drfa08cbtrsr4"]
 
 [ext_resource type="Script" path="res://characters/staus_panel.gd" id="1_22pv7"]
 [ext_resource type="Texture2D" uid="uid://bqxn1gyy87fw0" path="res://assets/Legacy-Fantasy - High Forest 2.3/HUD/Base-01.png" id="2_lqiyl"]
 [ext_resource type="Texture2D" uid="uid://cwf7jxuctf4xp" path="res://player-idle1.png" id="3_1pukt"]
-[ext_resource type="Texture2D" uid="uid://cll01pc27q2h2" path="res://pixel_assets/gear.png" id="4_l2auv"]
+[ext_resource type="Texture2D" uid="uid://cpobpw1bw8pkw" path="res://pixel_assets/HUD.png" id="4_ok4k0"]
+[ext_resource type="Theme" uid="uid://drb42fs6jxoc1" path="res://screen/main_theme.tres" id="4_uhbuw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ey03u"]
 texture = ExtResource("2_lqiyl")
@@ -48,6 +49,10 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xm20p"]
 texture = ExtResource("2_lqiyl")
 region_rect = Rect2(95, 207, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpb6p"]
+atlas = ExtResource("4_ok4k0")
+region = Rect2(50, 210, 12, 12)
 
 [sub_resource type="LabelSettings" id="LabelSettings_q8583"]
 font_size = 8
@@ -111,6 +116,7 @@ texture_progress_offset = Vector2(1, 1)
 
 [node name="HealthNum" type="Label" parent="StausPanel/V/Health"]
 layout_mode = 2
+theme = ExtResource("4_uhbuw")
 text = "3"
 label_settings = SubResource("LabelSettings_0sudi")
 
@@ -131,6 +137,7 @@ texture_progress_offset = Vector2(1, 1)
 
 [node name="EnergyNum" type="Label" parent="StausPanel/V/Energy"]
 layout_mode = 2
+theme = ExtResource("4_uhbuw")
 text = "10"
 label_settings = SubResource("LabelSettings_56bq5")
 horizontal_alignment = 1
@@ -153,10 +160,11 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_xm20p")
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer"]
 layout_mode = 2
-texture = ExtResource("4_l2auv")
+texture = SubResource("AtlasTexture_jpb6p")
 
 [node name="Material_num" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_uhbuw")
 text = "10
 "
 label_settings = SubResource("LabelSettings_q8583")

@@ -1,9 +1,135 @@
-[gd_scene load_steps=5 format=3 uid="uid://c02xorbpkowa2"]
+[gd_scene load_steps=18 format=3 uid="uid://c02xorbpkowa2"]
 
 [ext_resource type="Theme" uid="uid://drb42fs6jxoc1" path="res://screen/main_theme.tres" id="1_b82sy"]
 [ext_resource type="Script" path="res://ui/title_screen.gd" id="2_d8hp1"]
 [ext_resource type="PackedScene" uid="uid://d3hu70rdnoiw3" path="res://background/parallax_background.tscn" id="3_ebblh"]
-[ext_resource type="FontFile" uid="uid://dn5gkxu04qepu" path="res://SmileySans-Oblique.ttf" id="4_t0h4f"]
+[ext_resource type="TileSet" uid="uid://ddndjxwrcelku" path="res://map/title_screen.tres" id="5_q3ats"]
+[ext_resource type="Texture2D" uid="uid://dd2n3kaip3cya" path="res://pixel_assets/player/player-collection.png" id="6_qgt4j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx64m"]
+atlas = ExtResource("6_qgt4j")
+region = Rect2(0, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n26rl"]
+atlas = ExtResource("6_qgt4j")
+region = Rect2(32, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7527"]
+atlas = ExtResource("6_qgt4j")
+region = Rect2(64, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7n8q"]
+atlas = ExtResource("6_qgt4j")
+region = Rect2(96, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7yht"]
+atlas = ExtResource("6_qgt4j")
+region = Rect2(128, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6pxu"]
+atlas = ExtResource("6_qgt4j")
+region = Rect2(160, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vvoq"]
+atlas = ExtResource("6_qgt4j")
+region = Rect2(192, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cinuo"]
+atlas = ExtResource("6_qgt4j")
+region = Rect2(224, 0, 32, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sx5nt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lx64m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n26rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7527")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7n8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7yht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6pxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vvoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cinuo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="Animation" id="Animation_xqw3b"]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("V:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.517632, 1),
+"update": 0,
+"values": [Vector2(400, 96), Vector2(296, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.435275, 1),
+"update": 0,
+"values": [Vector2(0, -56), Vector2(0, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_tvghl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("V:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(296, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2o8e"]
+_data = {
+"RESET": SubResource("Animation_tvghl"),
+"enter": SubResource("Animation_xqw3b")
+}
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -23,25 +149,32 @@ transform = Transform2D(1, 0, 0, 1, 0, -110)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 56.0
+offset_top = 24.0
+offset_right = 384.0
+offset_bottom = 80.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("4_t0h4f")
-theme_override_font_sizes/font_size = 66
+theme_override_colors/font_color = Color(0.733333, 0.160784, 0.243137, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.4, 0.258824, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 55
 text = "Seek to Survive"
 horizontal_alignment = 1
+language = "en"
 
 [node name="V" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -112.0
-offset_right = 22.0
-offset_bottom = -11.0
-grow_horizontal = 2
+offset_left = 296.0
+offset_top = 96.0
+offset_right = 337.0
+offset_bottom = 179.0
+grow_horizontal = 0
 grow_vertical = 0
 
 [node name="NewGame" type="Button" parent="V"]
@@ -56,6 +189,31 @@ text = "Load"
 layout_mode = 2
 size_flags_horizontal = 8
 text = " Exit "
+
+[node name="Graphics" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics"]
+position = Vector2(112, 112)
+sprite_frames = SubResource("SpriteFrames_sx5nt")
+autoplay = "default"
+
+[node name="TileMap" type="TileMap" parent="Graphics"]
+tile_set = ExtResource("5_q3ats")
+format = 2
+layer_0/name = "background"
+layer_0/z_index = -1
+layer_1/name = "ground"
+layer_1/tile_data = PackedInt32Array(851975, 65540, 2, 786439, 196612, 2, 720903, 65540, 2, 655367, 327684, 2, 589831, 262148, 0, 851974, 65540, 2, 786438, 65540, 3, 720902, 196612, 2, 655366, 458756, 2, 589830, 4, 0, 851976, 65540, 2, 786440, 196612, 2, 720904, 327684, 2, 851973, 131076, 2, 786437, 196612, 3, 720901, 131076, 2, 655365, 196612, 0, 851977, 65540, 3, 786441, 196612, 3, 720905, 393220, 1, 851972, 65540, 3, 786436, 458756, 2, 720900, 524292, 0, 655364, 4, 0, 917515, 262148, 4, 851979, 655364, 1, 786443, 655364, 1, 720907, 262148, 0, 917514, 65540, 4, 851978, 196612, 2, 786442, 196612, 2, 720906, 196612, 0, 917513, 131076, 4, 917512, 131076, 4, 917511, 131076, 4, 917510, 196612, 4, 917509, 65540, 4, 917508, 65540, 4, 917507, 196612, 4, 917506, 65540, 4, 851971, 196612, 2, 786435, 131076, 0, 851970, 196612, 2, 786434, 196612, 0, 917505, 65540, 4, 851969, 65540, 3, 786433, 196612, 0, 917504, 4, 4, 851968, 524292, 0, 786432, 4, 0, 655368, 262148, 0)
+layer_2/name = "foreground"
+layer_2/z_index = 1
+layer_2/tile_data = PackedInt32Array()
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h2o8e")
+}
+autoplay = "enter"
 
 [connection signal="pressed" from="V/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="V/LoadGame" to="." method="_on_load_game_pressed"]
