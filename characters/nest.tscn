@@ -267,7 +267,7 @@ position = Vector2(5, -18.5)
 shape = SubResource("RectangleShape2D_6aax7")
 
 [node name="Stats" parent="." index="4"]
-max_health = 3
+max_health = 20
 
 [node name="GenerationTimer" type="Timer" parent="." index="5"]
 wait_time = 5.0
