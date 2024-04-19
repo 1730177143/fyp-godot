@@ -1,29 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://huya76312gep"]
+[gd_scene load_steps=9 format=3 uid="uid://huya76312gep"]
 
-[ext_resource type="Texture2D" uid="uid://dmpqxcgnh1dmy" path="res://assets/enemies/enemy-death/enemy-death-1.png" id="1_5wrpu"]
-[ext_resource type="Texture2D" uid="uid://b5jdsyi6b3pnn" path="res://assets/enemies/enemy-death/enemy-death-2.png" id="2_n1wjj"]
-[ext_resource type="Texture2D" uid="uid://b3lkw01w8jge4" path="res://assets/enemies/enemy-death/enemy-death-3.png" id="3_qrtad"]
-[ext_resource type="Texture2D" uid="uid://lpam2rwt8fcb" path="res://assets/enemies/enemy-death/enemy-death-4.png" id="4_pumy5"]
-[ext_resource type="Texture2D" uid="uid://dnm65bgpuoms" path="res://assets/enemies/enemy-death/enemy-death-5.png" id="5_c2v3n"]
+[ext_resource type="Texture2D" uid="uid://bgqtbu4p8v0ub" path="res://pixel_assets/enemy-death-sheet.png" id="1_6f286"]
 [ext_resource type="Script" path="res://characters/enemies/enemy_dealth_effect.gd" id="6_0pncj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0x2a"]
+atlas = ExtResource("1_6f286")
+region = Rect2(0, 0, 65, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovm5d"]
+atlas = ExtResource("1_6f286")
+region = Rect2(65, 0, 65, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j4cs"]
+atlas = ExtResource("1_6f286")
+region = Rect2(130, 0, 65, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi2o7"]
+atlas = ExtResource("1_6f286")
+region = Rect2(195, 0, 65, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugv3j"]
+atlas = ExtResource("1_6f286")
+region = Rect2(260, 0, 65, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k2ttc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_5wrpu")
+"texture": SubResource("AtlasTexture_w0x2a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_n1wjj")
+"texture": SubResource("AtlasTexture_ovm5d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_qrtad")
+"texture": SubResource("AtlasTexture_7j4cs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_pumy5")
+"texture": SubResource("AtlasTexture_gi2o7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_c2v3n")
+"texture": SubResource("AtlasTexture_ugv3j")
 }, {
 "duration": 1.0,
 "texture": null
@@ -38,7 +54,6 @@ position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_k2ttc")
 animation = &"dealth"
 autoplay = "dealth"
-frame = 5
 frame_progress = 1.0
 script = ExtResource("6_0pncj")
 

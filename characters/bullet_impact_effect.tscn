@@ -1,29 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgddsg5eqdyhe"]
+[gd_scene load_steps=9 format=3 uid="uid://dgddsg5eqdyhe"]
 
-[ext_resource type="Texture2D" uid="uid://dwjhxhknaq1h1" path="res://assets/player/bullet-impact/impact-1.png" id="1_dp83r"]
-[ext_resource type="Texture2D" uid="uid://yxr8jpm726q4" path="res://assets/player/bullet-impact/impact-2.png" id="2_rdgvv"]
-[ext_resource type="Texture2D" uid="uid://wea5haigbcoc" path="res://assets/player/bullet-impact/impact-3.png" id="3_7w1w6"]
-[ext_resource type="Texture2D" uid="uid://kq1y1rbj5rgj" path="res://assets/player/bullet-impact/impact-4.png" id="4_yo7g5"]
-[ext_resource type="Texture2D" uid="uid://bha6gcjf50xhe" path="res://assets/player/bullet-impact/impact-5.png" id="5_4olm6"]
+[ext_resource type="Texture2D" uid="uid://ttpb1km080dq" path="res://pixel_assets/impact-sheet.png" id="1_pyeu3"]
 [ext_resource type="Script" path="res://characters/bullet_impact_effect.gd" id="6_dnyys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o805"]
+atlas = ExtResource("1_pyeu3")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvb58"]
+atlas = ExtResource("1_pyeu3")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq64y"]
+atlas = ExtResource("1_pyeu3")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkgwl"]
+atlas = ExtResource("1_pyeu3")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjlb3"]
+atlas = ExtResource("1_pyeu3")
+region = Rect2(48, 0, 12, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tjckl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_dp83r")
+"texture": SubResource("AtlasTexture_1o805")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_rdgvv")
+"texture": SubResource("AtlasTexture_vvb58")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_7w1w6")
+"texture": SubResource("AtlasTexture_fq64y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_yo7g5")
+"texture": SubResource("AtlasTexture_tkgwl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_4olm6")
+"texture": SubResource("AtlasTexture_vjlb3")
 }],
 "loop": false,
 "name": &"impact_effect",
@@ -34,7 +50,6 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_tjckl")
 animation = &"impact_effect"
 autoplay = "impact_effect"
-frame = 4
 frame_progress = 1.0
 script = ExtResource("6_dnyys")
 

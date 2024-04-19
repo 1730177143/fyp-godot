@@ -1,20 +1,34 @@
 [remap]
 
-importer="texture_atlas"
-type="Texture2D"
-uid="uid://m62mofmbrkp1"
-path="res://.godot/imported/player-slide.png-7cc4fa9d53419507da6151e84a199ceb.res"
-group_file="res://pixel_assets/player/colletion.png"
-valid=true
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://i0c8omfp1lkc"
+path="res://.godot/imported/player-slide.png-7cc4fa9d53419507da6151e84a199ceb.ctex"
+metadata={
+"vram_texture": false
+}
+
 [deps]
 
-
 source_file="res://pixel_assets/player/player-slide.png"
-dest_files=["res://.godot/imported/player-slide.png-7cc4fa9d53419507da6151e84a199ceb.res"]
+dest_files=["res://.godot/imported/player-slide.png-7cc4fa9d53419507da6151e84a199ceb.ctex"]
 
 [params]
 
-atlas_file="res://pixel_assets/player/colletion.png"
-import_mode=0
-crop_to_region=false
-trim_alpha_border_from_region=true
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

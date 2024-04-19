@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://grgcwvb5bdgr"
-path="res://.godot/imported/player-spin.png-fe608136c91a1c1864a05e74a025ca87.ctex"
+uid="uid://vr2c3j71iead"
+path="res://.godot/imported/Background-Hills.png-2bbd17def8d528d1f505591bc0c12a55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pixel_assets/player/player-spin.png"
-dest_files=["res://.godot/imported/player-spin.png-fe608136c91a1c1864a05e74a025ca87.ctex"]
+source_file="res://pixel_assets/background/Background-Hills.png"
+dest_files=["res://.godot/imported/Background-Hills.png-2bbd17def8d528d1f505591bc0c12a55.ctex"]
 
 [params]
 

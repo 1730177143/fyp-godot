@@ -13,7 +13,8 @@ config_version=5
 config/name="seek to survive"
 run/main_scene="res://ui/title_screen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://player.png"
+config/windows_native_icon="res://player.ico"
 
 [autoload]
 
@@ -90,3 +91,4 @@ pause={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

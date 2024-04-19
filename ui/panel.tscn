@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://drfa08cbtrsr4"]
 
 [ext_resource type="Script" path="res://ui/panel.gd" id="1_pswep"]
-[ext_resource type="Texture2D" uid="uid://cwf7jxuctf4xp" path="res://player-idle1.png" id="3_nch13"]
+[ext_resource type="Texture2D" uid="uid://dlf4dwvr7ciyc" path="res://pixel_assets/player/player-idle1.png" id="3_b6pe8"]
 [ext_resource type="Theme" uid="uid://bhv0j0gsv3dnj" path="res://main_theme.tres" id="4_k42ip"]
 [ext_resource type="Texture2D" uid="uid://cpobpw1bw8pkw" path="res://pixel_assets/HUD.png" id="5_vusn8"]
 
@@ -14,7 +14,7 @@ texture_margin_bottom = 3.0
 region_rect = Rect2(95, 207, 18, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxvwo"]
-atlas = ExtResource("3_nch13")
+atlas = ExtResource("3_b6pe8")
 region = Rect2(9, 5, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mdam"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://grgcwvb5bdgr"
-path="res://.godot/imported/player-spin.png-fe608136c91a1c1864a05e74a025ca87.ctex"
+uid="uid://dqguqdxj8j8q"
+path="res://.godot/imported/Background-Trees.png-ffc012b4eab95544fe6177cbd9bfe0ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pixel_assets/player/player-spin.png"
-dest_files=["res://.godot/imported/player-spin.png-fe608136c91a1c1864a05e74a025ca87.ctex"]
+source_file="res://pixel_assets/background/Background-Trees.png"
+dest_files=["res://.godot/imported/Background-Trees.png-ffc012b4eab95544fe6177cbd9bfe0ec.ctex"]
 
 [params]
 

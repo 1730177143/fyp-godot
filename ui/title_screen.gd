@@ -3,9 +3,11 @@ extends Control
 @onready var v: VBoxContainer = $V
 @onready var new_game: Button = $V/NewGame
 @onready var load_game: Button = $V/LoadGame
+@onready var label: Label = $Label
 
 
 func _ready() -> void:
+	label._set_size(Vector2(384,56))
 	load_game.disabled = not Game.has_save()
 	
 	new_game.grab_focus()
