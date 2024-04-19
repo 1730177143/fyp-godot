@@ -295,7 +295,7 @@ func transition_state(from: State, to: State) -> void:
 			animation_player.play("hurt")
 			
 			#Input.start_joy_vibration(0, 0, 0.8, 0.8)
-			#Game.shake_camera(4)
+			Game.shake_camera(4)
 			
 			stats.health -= pending_damage.amount
 			

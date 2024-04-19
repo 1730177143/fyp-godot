@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://caebuj15hb07i"]
+[gd_scene load_steps=29 format=3 uid="uid://caebuj15hb07i"]
 
 [ext_resource type="Texture2D" uid="uid://dd2n3kaip3cya" path="res://pixel_assets/player/player-collection.png" id="1_1uyxo"]
 [ext_resource type="Script" path="res://characters/player.gd" id="1_t4ag7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://drtqdqiglf6eo" path="res://pixel_assets/player/Dark-Bolt.png" id="3_rcun8"]
 [ext_resource type="PackedScene" uid="uid://drfa08cbtrsr4" path="res://ui/panel.tscn" id="5_o681y"]
 [ext_resource type="PackedScene" uid="uid://c33i4e5y5e16n" path="res://ui/game_over_screen.tscn" id="7_02uw0"]
+[ext_resource type="PackedScene" uid="uid://b36gmd2g1dtur" path="res://ui/virtual_joypad.tscn" id="7_yl3tm"]
 [ext_resource type="PackedScene" uid="uid://bcf62os6xf4hw" path="res://ui/pause_screen.tscn" id="8_ass1e"]
 [ext_resource type="Texture2D" uid="uid://gomg1brudmnt" path="res://pixel_assets/gdb-gamepad-2(all)/gdb-keyboard-2.png" id="9_m43eq"]
 
@@ -682,6 +683,9 @@ script = ExtResource("3_j7mii")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Panel" parent="CanvasLayer" instance=ExtResource("5_o681y")]
+
+[node name="VirtualJoypad" parent="CanvasLayer" instance=ExtResource("7_yl3tm")]
+modulate = Color(1, 1, 1, 0.466667)
 
 [node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("7_02uw0")]
 

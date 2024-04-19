@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2j0iobq1rmmm"]
+[gd_scene load_steps=8 format=3 uid="uid://b2j0iobq1rmmm"]
 
 [ext_resource type="Script" path="res://map/world.gd" id="1_s7x87"]
 [ext_resource type="PackedScene" uid="uid://d3hu70rdnoiw3" path="res://background/parallax_background.tscn" id="2_v12fp"]
 [ext_resource type="PackedScene" uid="uid://caebuj15hb07i" path="res://characters/player.tscn" id="3_ca4kd"]
+[ext_resource type="Script" path="res://classes/ShakyCamera.gd" id="5_6p6te"]
 [ext_resource type="TileSet" uid="uid://ddndjxwrcelku" path="res://map/title_screen.tres" id="5_jytw7"]
 [ext_resource type="PackedScene" uid="uid://bqxqwli4dmxne" path="res://characters/nest.tscn" id="6_402jw"]
 [ext_resource type="PackedScene" uid="uid://0qgrb07ivpwr" path="res://characters/wall.tscn" id="6_s7y12"]
@@ -29,13 +30,14 @@ layer_2/tile_data = PackedInt32Array(-65526, 458756, 3, -65523, 524292, 2, -6552
 position = Vector2(824, -8)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-visible = false
 position = Vector2(0, -16)
+process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+script = ExtResource("5_6p6te")
 
 [node name="Nest" parent="." instance=ExtResource("6_402jw")]
 position = Vector2(88, 0)
