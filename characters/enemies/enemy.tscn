@@ -8,6 +8,7 @@
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
+collision_mask = 33
 script = ExtResource("1_m1cn8")
 
 [node name="Graphics" type="Node2D" parent="."]
@@ -15,9 +16,13 @@ script = ExtResource("1_m1cn8")
 [node name="Sprite2D" type="Sprite2D" parent="Graphics"]
 
 [node name="Hitbox" type="Area2D" parent="Graphics"]
+collision_layer = 0
+collision_mask = 8
 script = ExtResource("3_dpufv")
 
 [node name="Hurtbox" type="Area2D" parent="Graphics"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("2_mhohl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

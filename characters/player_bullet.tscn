@@ -28,9 +28,9 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="PlayerBullet" type="Area2D"]
+[node name="PlayerBullet" type="Area2D" groups=["bullets"]]
 collision_layer = 0
-collision_mask = 257
+collision_mask = 17
 script = ExtResource("2_4s8vq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

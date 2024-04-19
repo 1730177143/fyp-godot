@@ -5,11 +5,12 @@ signal health_changed
 signal energy_changed
 signal material_changed
 
+
 @export var max_health: int = 3
 @export var max_energy: float = 10
 @export var energy_regen: float = 0.8
 @export var max_material :int=1000
-
+@export var kill_enemies_amount :int=0
 
 @onready var material: int = 10:
 	set(v):
@@ -48,6 +49,7 @@ func to_dict() -> Dictionary:
 		health=health,
 		material=material,
 		energy=energy,
+		kill_enemies_amount=kill_enemies_amount
 	}
 
 
@@ -58,3 +60,4 @@ func from_dict(dict: Dictionary) -> void:
 	health = dict.health
 	material=dict.material
 	energy=dict.energy
+	kill_enemies_amount=dict.kill_enemies_amount

@@ -23,7 +23,7 @@ var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as floa
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: Node = $StateMachine
 @onready var stats: Node = $Stats
-
+@onready var player_stats: Node = Game.player_stats
 
 func move(speed: float, delta: float) -> void:
 	velocity.x = move_toward(velocity.x, speed * direction, acceleration * delta)
@@ -33,5 +33,7 @@ func move(speed: float, delta: float) -> void:
 
 
 func die() -> void:
+	player_stats.material += 2
+	player_stats.kill_enemies_amount += 1
 	died.emit()
 	queue_free()

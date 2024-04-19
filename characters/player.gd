@@ -60,10 +60,12 @@ var Bullet: PackedScene = preload("res://characters/player_bullet.tscn")
 @onready var muzzle: Marker2D = $Muzzle
 @onready var muzzle_2: Marker2D = $Muzzle2
 @onready var shoot_timer: Timer = $ShootTimer
-@onready var stats: Stats = $Stats
+@onready var stats: Node = Game.player_stats
 @onready var invincible_timer: Timer = $InvincibleTimer
 @onready var game_over_screen: Control = $CanvasLayer/GameOverScreen
 @onready var pause_screen: Control = $CanvasLayer/PauseScreen
+@onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
+@onready var state_machine: StateMachine = $StateMachine
 
 func _ready() -> void:
 	pass
@@ -77,8 +79,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if velocity.y < JUMP_VELOCITY / 2:
 			velocity.y = JUMP_VELOCITY / 2
 			
-	#if event.is_action_pressed("interact") and interacting_with:
-		#interacting_with.back().interact()
+	if event.is_action_pressed("interact") and interacting_with:
+		interacting_with.back().interact()
 	
 	if event.is_action_pressed("pause"):
 		pause_screen.show_pause()
@@ -87,8 +89,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # 每个物理帧调用一次
 func tick_physics(state: State, delta: float) -> void:
-	#interaction_icon.visible = not interacting_with.is_empty()
-	#
+	interaction_icon.visible = not interacting_with.is_empty()
+	
 	if invincible_timer.time_left > 0:
 		graphics.modulate.a = sin(Time.get_ticks_msec() / 20) * 0.5 + 0.5
 	else:
@@ -175,6 +177,16 @@ func shoot_bullet() -> void:
 func die() -> void:
 	game_over_screen.show_game_over()
 
+func register_interactable(v: Interactable) -> void:
+	if state_machine.current_state == State.DYING:
+		return
+	if v in interacting_with:
+		return
+	interacting_with.append(v)
+
+func unregister_interactable(v: Interactable) -> void:
+	interacting_with.erase(v)
+
 func get_next_state(state: State) -> int:
 	if stats.health == 0:
 		return StateMachine.KEEP_CURRENT if state == State.DYING else State.DYING
@@ -243,11 +255,11 @@ func get_next_state(state: State) -> int:
 	return StateMachine.KEEP_CURRENT
 
 func transition_state(from: State, to: State) -> void:
-	print("[%s] %s => %s" % [
-		Engine.get_physics_frames(),
-		State.keys()[from] if from != -1 else "<START>",
-		State.keys()[to],
-	])
+	#print("[%s] %s => %s" % [
+		#Engine.get_physics_frames(),
+		#State.keys()[from] if from != -1 else "<START>",
+		#State.keys()[to],
+	#])
 
 	
 	if from not in GROUND_STATES and to in GROUND_STATES:
@@ -296,7 +308,7 @@ func transition_state(from: State, to: State) -> void:
 		State.DYING:
 			animation_player.play("die")
 			invincible_timer.stop()
-			#interacting_with.clear()
+			interacting_with.clear()
 			
 		State.RUSH:
 			animation_player.play("rush")

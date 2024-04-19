@@ -1,14 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://caebuj15hb07i"]
+[gd_scene load_steps=28 format=3 uid="uid://caebuj15hb07i"]
 
 [ext_resource type="Texture2D" uid="uid://dd2n3kaip3cya" path="res://pixel_assets/player/player-collection.png" id="1_1uyxo"]
 [ext_resource type="Script" path="res://characters/player.gd" id="1_t4ag7"]
 [ext_resource type="Script" path="res://classes/StateMachine.gd" id="3_j7mii"]
 [ext_resource type="Script" path="res://classes/Hurtbox.gd" id="3_qf17f"]
 [ext_resource type="Texture2D" uid="uid://drtqdqiglf6eo" path="res://pixel_assets/player/Dark-Bolt.png" id="3_rcun8"]
-[ext_resource type="PackedScene" uid="uid://drfa08cbtrsr4" path="res://characters/panel.tscn" id="5_o681y"]
-[ext_resource type="Script" path="res://classes/Stats.gd" id="6_wyxce"]
+[ext_resource type="PackedScene" uid="uid://drfa08cbtrsr4" path="res://ui/panel.tscn" id="5_o681y"]
 [ext_resource type="PackedScene" uid="uid://c33i4e5y5e16n" path="res://ui/game_over_screen.tscn" id="7_02uw0"]
 [ext_resource type="PackedScene" uid="uid://bcf62os6xf4hw" path="res://ui/pause_screen.tscn" id="8_ass1e"]
+[ext_resource type="Texture2D" uid="uid://gomg1brudmnt" path="res://pixel_assets/gdb-gamepad-2(all)/gdb-keyboard-2.png" id="9_m43eq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqi50"]
 size = Vector2(14, 30)
@@ -473,46 +473,6 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_vifjj"]
-resource_name = "shoot"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Graphics/Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 152, 96, 38)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Graphics/Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Graphics/Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
 [sub_resource type="Animation" id="Animation_xwoh4"]
 resource_name = "rush"
 length = 0.3
@@ -555,6 +515,46 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_vifjj"]
+resource_name = "shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Graphics/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 152, 96, 38)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Graphics/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Graphics/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cg5yx"]
 _data = {
 "RESET": SubResource("Animation_vsc1o"),
@@ -569,8 +569,50 @@ _data = {
 "shoot": SubResource("Animation_vifjj")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvqj0"]
+atlas = ExtResource("9_m43eq")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3gdy"]
+atlas = ExtResource("9_m43eq")
+region = Rect2(96, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgy2m"]
+atlas = ExtResource("9_m43eq")
+region = Rect2(96, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1fpv"]
+atlas = ExtResource("9_m43eq")
+region = Rect2(96, 384, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vss0c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvqj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3gdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgy2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1fpv")
+}],
+"loop": true,
+"name": &"keyboard",
+"speed": 6.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"nintendo",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 65
 script = ExtResource("1_t4ag7")
 
 [node name="Graphics" type="Node2D" parent="."]
@@ -645,8 +687,11 @@ script = ExtResource("3_j7mii")
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("8_ass1e")]
 
-[node name="Stats" type="Node" parent="."]
-script = ExtResource("6_wyxce")
+[node name="InteractionIcon" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -46)
+sprite_frames = SubResource("SpriteFrames_vss0c")
+animation = &"keyboard"
+autoplay = "keyboard"
 
 [connection signal="shoot" from="." to="." method="_on_shoot"]
 [connection signal="hurt" from="Graphics/Hurtbox" to="." method="_on_hurtbox_hurt"]
